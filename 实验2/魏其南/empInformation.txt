@@ -1,0 +1,7 @@
+553:03-99999999:Coles:David:M:12:Manager:1999-12-12
+131:02-95673456:Couch:David:A:26:Consultant:1994-04-23
+812:02-98781987:Xue:Fei:L:35:Computer Officer:1998-10-09
+111:02-98781999:Williams:Nick:T:35:Computer Officer:2000-10-14
+112:02-99893878:Brown:Sarah:B:12:Electrician:1992-02-09
+236:02-95437869:Anderson:Sarah:K:19:CEO:1988-09-21
+123:08-98743267:feng:wang:H:23:officer:1998-09-9
