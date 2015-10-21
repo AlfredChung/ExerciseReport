@@ -1,0 +1,57 @@
+//1
+package test1;
+
+import static org.junit.Assert.*;
+import junit.framework.Assert;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class StudentTest {
+	Student teststudent=new Student("zcc",23);
+
+	@Before
+	public void setUp() throws Exception {
+		
+	}
+
+	@Test
+	public void testGetName() {
+		Assert.assertEquals("zcc", teststudent.getName());
+	}
+
+	
+
+	@Test
+	public void testGetAge() {
+		Assert.assertEquals(19, teststudent.getAge());
+	}
+}
+//2
+package test2;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class BookTest {
+	Book book = new Book("Thinking in Java", "Bruce Eckel", 4);
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@Test
+	public void testBookStringStringInt() {
+		
+		assertEquals(true, book.subscribe());// 第一次预借，应该是成功的  
+		assertEquals(2, book.getAvailNum());// 此时的可预借数是2  
+		assertEquals(true, book.cancelSubscribe());// 取消预借，应该是成功的  
+		assertEquals(3, book.getAvailNum());// 此时的可预借数是3  
+		book.setAvailNum(0);// 将可预借数设为0  
+		assertEquals(false, book.subscribe());// 此时预借，应该是不成功的 
+	}
+
+}
+
+

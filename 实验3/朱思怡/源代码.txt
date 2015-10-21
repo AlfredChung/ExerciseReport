@@ -1,0 +1,102 @@
+//第一段
+package learn03;
+
+public class ArrayFunction {
+	//求数组的最大值
+	public int max(int[] arr){
+		int max=arr[0];
+		for (int i = 0; i <= arr.length; i++) {//Debug:数组越界
+			if (max<arr[i]) {
+				max=arr[i];
+			}
+		}
+		return max;
+	}
+	//求数组的最小值
+	public int min(int[] arr){
+		int min=arr[0];
+		for (int i = 0; i < arr.length; i++) {
+			if(min>arr[i]){
+				min=arr[i];
+			}
+		}
+		return min;
+	}
+	//求和
+	public int sum(int[] arr){
+		int sum=0;
+		for (int i = 0; i < arr.length; i++) {
+			sum+=arr[i];
+		}
+		return sum;
+	}
+	
+	//求平均值
+	public double avg(int[] arr){
+		int sum=sum(arr);
+//		return sum/arr.length;
+		return sum/0;//Debug:除零异常
+	}
+	//数组的反转
+	public int[] reverse(int[] arr){
+//		for (int i = 0; i < arr.length/2; i++) {
+//			int temp=arr[i];
+//			arr[i]=arr[arr.length-1-i];
+//			arr[arr.length-1-i]=temp;
+//		}
+		for (int i = 0,j=arr.length-1; i < j; i+n,j--) {//Debug:这里应该是i++
+			int temp=arr[i];
+			arr[i]=arr[j];
+			arr[j]=temp;
+		}
+		return arr;
+	}
+	//数组的复制
+	public int[] copy(int[] arr){
+		int[] arr1=new int[arr.length];
+		for (int i = 0; i < arr.length; i++) {
+			arr1[i]=arr[i];
+		}
+		return arr1;
+	}
+	//数组的排序
+	public int[] sort(int[] arr){
+		for (int i = 0; i < arr.length-1; i++) {
+			for (int j = i; j < arr.length; j++) {//for(int j=0;j<arr.length-1-i;j++)
+				if(arr[i]>arr[j]){
+					int temp=arr[i];
+					arr[i]=arr[j];
+					arr[j]=temp;
+				}
+			}
+		}
+		return arr;
+	}
+}
+
+//第二段
+package learn03;
+
+public class Customer {
+	private String firstName;
+	private String lastName;
+	private Account account;
+	public Customer(String firstName, String lastName) {
+		firstName = firstName;//Debug:这里应该是有this关键字进行值传递
+//		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+	public Account getAccount() {
+		return account;
+	}
+	public void setAccount(Account account) {
+//		this.account = account;
+		this.account = acount;//Debug:变量名输写错误
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public String getLastName() {//Debug:缺少return语句
+//		return lastName;
+	}
+}

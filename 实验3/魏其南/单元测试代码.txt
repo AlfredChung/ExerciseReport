@@ -1,0 +1,172 @@
+//代码1
+
+public class QuicksortUnit {//快速排序算法
+	private int partition(int array[],int low,int high){
+		int pivotkey=array[low];
+		int temp=0;
+		while(low<high){
+			while(low<high&&array[high]>=pivotkey){
+				high--;
+			}
+			temp=array[low];
+			array[low]=array[high];
+			array[high]=temp;
+			while(low<high&&array[low]<=pivotkey){
+				low++;
+			}
+			temp=array[low];
+			array[low]=array[high];
+			array[high]=temp;
+		}
+		return low;
+	}
+	public int[] qSort(int array[],int low,int high){
+		if(low<high){
+			int index=partition(array, low, high);
+			qSort(array,low,index-1);
+			qSort(array,index+1,high);
+		}	
+		return array;
+	}
+}
+
+//代码2
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+
+
+public class Student {
+	private String stuName;
+	private String major;
+	private	boolean sex;
+	private int age;
+	public Student(String stuName,String major,boolean sex,int age){//有参构造函数
+		this.stuName=stuName;
+		this.major=major;
+		this.sex=sex;
+		this.age=age;
+	}
+	public String toString(){
+		return stuName+"    "+major+"    "+(sex?'男':'女')+"    "+age;
+	}
+	public String getStuName() {
+		return stuName;
+	}
+	public void setStuName(String stuName) {
+		this.stuName = stuName;
+	}
+	public String getMajor() {
+		return major;
+	}
+	public void setMajor(String major) {
+		this.major = major;
+	}
+	public boolean getSex() {
+		return sex;
+	}
+	public void setSex(boolean sex) {
+		this.sex = sex;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public  Student changeInfor(ArrayList<Student> s){//修改学生
+		System.out.println("输入要修改的学生的姓名：");
+		int k=findIndex(s);
+		if(k==-1){
+			System.out.println("该学生不存在");
+		}else{
+			System.out.println("学生姓名     学生专业    学生性别   学生年龄\n"+s.get(k).toString()+"\n选择您要修改内容：1.学生姓名  2.学生专业3.学生性别  4.学生年龄");
+			String input=null;
+			Scanner sc=new Scanner(System.in);
+			input=sc.nextLine();
+			switch(input.charAt(0)){
+			case '1':
+				System.out.println("学生姓名改为：");
+				s.get(k).setStuName(checkStringLength());
+				break;
+			case '2':
+				System.out.println("学生专业改为：");
+				s.get(k).setMajor(checkStringLength());
+				break;
+			case '3':
+				System.out.println("学生性别改为：（1.男生2.女生)");
+				s.get(k).setSex(sexInput().charAt(0)=='1');
+				break;
+			case '4':
+				System.out.println("学生年龄改为：");
+				s.get(k).setAge(Integer.parseInt(ageInput()));
+				break;
+			default:
+				System.out.println("输入错误");
+				}
+			System.out.println("修改成功！\n学生姓名     学生专业    学生性别   学生年龄\n"+s.get(k).toString());
+			return s.get(k);}
+		return null;
+	}
+	private  int findIndex(ArrayList<Student> s){ //根据输入的姓名查找容器中的学生
+		String name=null;
+		Scanner sc=new Scanner(System.in);
+		name=sc.nextLine();
+		for (int i = 0; i < s.size(); i++) {
+			if(s.get(i).getStuName().equals(name)){
+				return i;
+			}
+		}
+		return -1;
+	}
+	private   String checkStringLength(){ //检查字符串长度不为0
+		Scanner sc=new Scanner(System.in);
+		String input=null;
+		while(true){
+			input=sc.nextLine();
+			if(input.length()!=0){
+				return input;
+			}
+		}
+	}
+	private  String sexInput(){  //性别输入检查
+		String input=null;
+		Scanner sc=new Scanner(System.in);
+		while(true){
+		input=sc.nextLine();
+		if(input.length()!=0&&(input.charAt(0)=='1'||input.charAt(0)=='2')){
+			return input;
+		}else{
+			System.out.println("输入不合理");
+			}
+		}
+	}
+	private  String ageInput(){//年龄输入检查
+		String input=null;
+		Scanner sc=new Scanner(System.in);
+		while(true){
+			input=sc.nextLine();
+			if(Integer.parseInt(input)>5&&Integer.parseInt(input)<30){
+				return input;
+			}else{
+				System.out.println("输入不合理");
+			}
+		}
+
+	}
+	@Override
+	public boolean equals(Object obj) {  //重写equals方法
+		// TODO Auto-generated method stub
+		if(obj instanceof Student){
+			if(this.stuName.equals(((Student) obj).getStuName())&&this.major.equals(((Student) obj).getMajor())){
+				if(this.age==((Student) obj).getAge()&&this.sex==((Student) obj).getSex()){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+}

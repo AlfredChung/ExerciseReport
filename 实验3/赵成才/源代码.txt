@@ -1,0 +1,117 @@
+测试单元1：
+package test1;
+
+public class Student  
+{  
+  
+    private String name;  
+    //private String sex;  
+    //private int high;  
+    private int age;  
+    //private String school;  
+      
+    public Student(String name,int age)  
+    {  
+        this.name = name;  
+          
+        this.age = age;  
+         
+    }  
+    public String getName()  
+    {  
+        return name;  
+    }  
+    public void setName(String name)  
+    {  
+        this.name = name;  
+    }  
+    
+    
+    public int getAge()  
+    {  
+        return age;  
+    }  
+    public boolean setAge(int age)  
+    {  
+        if (age >25)  
+        {  
+            return false;  
+        }  
+        else  
+        {  
+            this.age = age;  
+            return true;  
+        }                 
+    }    
+} 
+
+//2
+package test1;
+
+import static org.junit.Assert.*;
+import junit.framework.Assert;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class StudentTest {
+	Student teststudent=new Student("zcc",23);
+
+	@Before
+	public void setUp() throws Exception {
+		
+	}
+
+	@Test
+	public void testGetName() {
+		Assert.assertEquals("zcc", teststudent.getName());
+	}
+
+	
+
+	@Test
+	public void testGetAge() {
+		Assert.assertEquals(19, teststudent.getAge());
+	}
+}
+
+	
+测试单元2：
+package test2;
+
+public class Book {  
+public String name;  
+public String author;  
+private int availNum;  
+ 
+public Book() {  
+this("", "", 0);  
+}  
+ 
+public Book(String name, String author, int availNum) {  
+this.name = name;  
+this.author = author;  
+this.availNum = availNum;  
+}  
+ 
+public int getAvailNum() {  
+return availNum;  
+}  
+ 
+public void setAvailNum(int availNum) {  
+this.availNum = availNum;  
+}  
+ 
+public boolean subscribe() {  
+if (availNum > 0) {  
+availNum--;  
+return true;  
+}  
+return false;  
+}  
+ 
+public boolean cancelSubscribe() {  
+availNum++;  
+return true;  
+}  
+} 
